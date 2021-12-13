@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('css/home.css') }}" rel="stylesheet">
 <div class="slide">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -29,13 +30,39 @@
             </a>
           </div>
     </div>
-    <a href="{{route('product.index')}}" type="button" class="btn btn-primary">Xem thêm</a>
-    @foreach ($products as $product)
-    <ul>
-        <li>{{$product->name}} - {{$product->brand}} - {{$product->money($product->price)}}</li>
-    </ul>
-        
-    @endforeach
+    <div class="banner">
+      <div class="d-flex justify-content-center">
+        San pham noi bat
+      </div>
+    </div>
+    
+    <div class="content container">
+      <div class="row">
+        @foreach ($products as $product)
+          <div class="col-3">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{$product->image}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="{{route('product.show',$product)}}" >{{$product->name}}</a>
+                </h5>
+                <p class="card-text d-flex justify-content-end">
+                  {{$product->money($product->price)}}
+                </p>
+                
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+    </div>
+    
+
+    <div class="more-btn d-flex justify-content-center">
+      <a href="{{route('product.index')}}" type="button" class="btn btn-primary">Xem thêm</a>
+    </div>
+    
+
 <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
