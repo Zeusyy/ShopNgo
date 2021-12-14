@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('css/product.css') }}" rel="stylesheet">
 <div class="container">
     @auth
         @if (Auth::user()->role_id == 1)
@@ -20,7 +21,9 @@
                 <div class="card-body d-flex justify-content-center">
                     <a href="{{route('product.show',$product)}}" >{{$product->name}}</a>
                 </div>
-                <div class="card-footer d-flex justify-content-end">{{$product->money($product->price)}}</div>
+                <div class="tien card-footer d-flex justify-content-end">
+                    {{$product->money($product->price)}}
+                </div>
             </div>
 
             {{-- {{$product->name}} - {{$product->brand}} - {{$product->money($product->price)}} --}}

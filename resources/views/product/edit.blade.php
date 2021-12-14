@@ -13,22 +13,22 @@
         </div>
 
         <div class="form-group">
-            <label for="brand">Thuong hieu:</label>
+            <label for="brand">Thương hiệu:</label>
             <input type="text" class="form-control" id="brand" name="brand" value="{{$product->brand}}">
         </div>
 
         <div class="form-group">
-            <label for="price">Gia tien:</label>
+            <label for="price">Giá tiền:</label>
             <input type="number" class="form-control" id="price" name="price" value="{{$product->price}}">
         </div>
 
         <div class="form-group">
-            <label for="display">Man hinh:</label>
+            <label for="display">Màn hình:</label>
             <input type="text" class="form-control" id="display" name="display" value="{{$product->Display}}">
         </div>
 
         <div class="form-group">
-            <label for="os">He dieu hanh:</label>
+            <label for="os">Hệ điều hành:</label>
             <input type="text" class="form-control" id="os" name="os" value="{{$product->OS}}">
         </div>
 
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            <label for="fcam">Camera truoc:</label>
+            <label for="fcam">Camera trước:</label>
             <input type="text" class="form-control" id="fcam" name="fcam" value="{{$product->FCAM}}">
         </div>
 
@@ -63,12 +63,12 @@
         </div>
 
         <div class="form-group">
-            <label for="battery">Pin, sac:</label>
+            <label for="battery">Pin, sạc:</label>
             <input type="text" class="form-control" id="battery" name="battery" value="{{$product->Battery}}">
         </div>
 
         <div class="form-group">
-            <label for="image">Hinh anh:</label>
+            <label for="image">Hình ảnh:</label>
             <input type="text" class="form-control" id="image" name="image" value="{{$product->image}}">
         </div>
         
