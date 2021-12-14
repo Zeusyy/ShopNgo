@@ -31,10 +31,12 @@
           </div>
     </div>
     <div class="banner">
-      <div class="d-flex justify-content-center">
-        San pham noi bat
+        <div class="title-top rounded">
+          <i class="bi bi-phone"></i>
+          Sản phẩm nổi bật
+        </div>
       </div>
-    </div>
+    
     
     <div class="content container">
       <div class="row">
@@ -47,7 +49,9 @@
                   <a href="{{route('product.show',$product)}}" >{{$product->name}}</a>
                 </h5>
                 <p class="card-text d-flex justify-content-end">
+                  <div class="tien d-flex justify-content-end">
                   {{$product->money($product->price)}}
+                  </div>
                 </p>
                 
               </div>

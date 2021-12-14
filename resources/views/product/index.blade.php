@@ -4,7 +4,7 @@
 <div class="container">
     @auth
         @if (Auth::user()->role_id == 1)
-            <a href="{{route('product.create')}}" type="button" class="btn btn-success">Them san pham</a>
+            <a href="{{route('product.create')}}" type="button" class="btn btn-success">Thêm sản phẩm</a>
         @endif
     @endauth
     

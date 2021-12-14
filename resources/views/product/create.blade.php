@@ -7,27 +7,27 @@
     <form action="{{route('product.store')}}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="name">Ten san pham:</label>
+            <label for="name">Tên sản phẩm:</label>
             <input type="text" class="form-control" id="name" name="name">
         </div>
 
         <div class="form-group">
-            <label for="brand">Thuong hieu:</label>
+            <label for="brand">Thương hiệu:</label>
             <input type="text" class="form-control" id="brand" name="brand">
         </div>
 
         <div class="form-group">
-            <label for="price">Gia tien:</label>
+            <label for="price">Giá tiền:</label>
             <input type="number" class="form-control" id="price" name="price">
         </div>
 
         <div class="form-group">
-            <label for="display">Man hinh:</label>
+            <label for="display">Màn hình:</label>
             <input type="text" class="form-control" id="display" name="display">
         </div>
 
         <div class="form-group">
-            <label for="os">He dieu hanh:</label>
+            <label for="os">Hệ điều hành:</label>
             <input type="text" class="form-control" id="os" name="os">
         </div>
 
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            <label for="fcam">Camera truoc:</label>
+            <label for="fcam">Camera trước:</label>
             <input type="text" class="form-control" id="fcam" name="fcam">
         </div>
 
@@ -62,12 +62,12 @@
         </div>
 
         <div class="form-group">
-            <label for="battery">Pin, sac:</label>
+            <label for="battery">Pin, sạc:</label>
             <input type="text" class="form-control" id="battery" name="battery">
         </div>
 
         <div class="form-group">
-            <label for="image">Hinh anh:</label>
+            <label for="image">Hình ảnh:</label>
             <input type="text" class="form-control" id="image" name="image">
         </div>
         

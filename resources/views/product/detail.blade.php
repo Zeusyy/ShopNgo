@@ -8,12 +8,12 @@
     @auth
         @if (Auth::user()->role_id == 1)
             <div class="row">
-                <a href="{{route('product.edit',$product)}}" type="button" class="btn btn-primary">Sua</a>
+                <a href="{{route('product.edit',$product)}}" type="button" class="btn btn-primary">Sửa</a>
             
             <form action="{{route('product.destroy',$product)}}" method="POST">
                 @csrf
                 @method('Delete')
-                <button  type="submit" class="btn btn-danger">Xoa</button>
+                <button  type="submit" class="btn btn-danger">Xoá</button>
             </form>
             </div>
         @endif
