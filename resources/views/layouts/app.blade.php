@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -70,6 +71,18 @@
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+                            <li class="nav-item cartIcon">
+                                <form action="{{route('cart.index')}}" method="GET">
+                                    <button type="submit" class="btn">
+                                        <i style="font-size: 25px" class="bi bi-cart"></i>
+                                        {{-- @if (Session::get('Cart') != null)
+                                            <span class='badge badge-warning' id='CartCount'> {{Session::get('Cart')->quantity}} </span>
+                                        @else
+                                            <span class='badge badge-warning' id='CartCount'> 0 </span>
+                                        @endif --}}
+                                    </button>
+                                </form>
                             </li>
                         @endguest
                         {{-- <a class="nav-link" href="{{ route('language', 'vn')}}">VN</a>

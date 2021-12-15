@@ -35,6 +35,9 @@
         <div class="col-5 ">
             <div class="row">
                 <p class="price col-12 d-flex justify-content-center">{{$product->money($product->price)}}</p>
+                <div style="width: 100%" class="d-flex justify-content-center">
+                    <button onclick="addCart('{{$product->id}}')"  type="button" class="btn btn-primary">Mua</button>
+                </div>
                 
                 <div class="col-12">
                     <table class="table table-borderless">
@@ -86,4 +89,26 @@
     </div>
     
 </div>
+<script>
+    function addCart(id) {
+        var currentLocation = window.location;
+        
+        $.ajax({
+            url: "/addCart/" + id,
+            type: 'GET',
+
+        }).done(function (respone) {
+            // var icon = '<span class="bi bi-bag-check test"></span>';
+            // alertify.notify(icon + " " + respone, 'custom');
+            console.log(respone);
+        });
+
+        // $.ajax({
+        //     url: "/cartQuantity",
+        //     type: 'GET',
+        // }).done(function (respone) {
+        //     $('#CartCount').text(respone);
+        // });
+    }
+</script>
 @endsection

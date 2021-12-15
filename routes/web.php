@@ -24,3 +24,12 @@ Route::get('/home', 'HomeController@index')
 // ->name('phone');
 
 Route::resource('product','ProductController');
+
+// cart
+Route::get('/cart',"CartController@index")
+->name('cart.index');
+
+Route::get('/addCart/{id}',"CartController@add")
+->name('cart.add');
+
+
