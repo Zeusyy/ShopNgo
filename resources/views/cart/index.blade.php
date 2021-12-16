@@ -39,15 +39,11 @@
                         <th class="text-center">{{__('Price')}}</th>
 
                         <th class="text-center">
-                            <a class="btn btn-sm btn-outline-danger" href="">Clear cart</a>
+                            <a class="btn btn-sm btn-outline-danger" href="{{route('cart.clear')}}">Clear cart</a>
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    
-
-                    
-
+                <tbody>  
                     @foreach (Session::get('Cart')->products as $product)
                     <tr>
                         <td>
@@ -85,7 +81,7 @@
                             <a class="remove-from-cart" href="#!" data-toggle="tooltip" title=""
                                 data-original-title="Remove item">
                                 <div class="remove">
-                                    <i class=" fa fa-trash" data-id=""></i>
+                                    <i class=" fa fa-trash" data-id="{{$product['productInfo']->id}}"></i>
                                 </div>
                             </a>
                         </td>
@@ -134,12 +130,13 @@
             </div> --}}
         </div>
     </div>
+
     
 </div>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script>
+{{-- <script>
     
     var proQty = $('.pro-qty');
     // proQty.prepend('<span class="dec qtybtn">-</span>');
@@ -169,122 +166,149 @@
         console.log('click');
     });
 
-</script>
+</script> --}}
 
-
-
-
-{{-- <script>
-    function updateCart(){
-        var list= [];
-        $("table tbody tr td").each(function(){
-            $(this).find("input").each(function(){
-                var element = {key: $(this).data("id"),value: $(this).val()};
-                list.push(element);
-            });
-        });
-
-        console.log(list);
-        var list1 = [1,2,3]
-        $.ajax({
-            url: "updateCart",
-            type:'POST',
-            data:{
-                "_token": "{{ csrf_token() }}",
-                "data": list,
-            }
-        }).done(function(respone){
-            var icon = '<span class="bi bi-bag-dash"></span>';
-            $("#change").empty();
-            $("#change").html(respone);
-            var noti = $( "#noti" ).val();
-            // alertify.notify(icon+ " " + noti, 'custom');
-        });
-        $.ajax({
-            url: "cartQuantity" ,
-            type:'GET',   
-        }).done(function(respone){
-            $('#CartCount').text(respone);
-            
-        });
-    }
-
-    $("#change").on("click", ".remove i", function () {
-        
+<script>
+    $(document).ready(function(){
+        $("#change").on("click", ".remove i", function () {
+        console.log('test');
         $.ajax({
             url: '/deleteCart/' + $(this).data('id'),
             type: 'GET',
         }).done(function (respone) {
-            var icon = '<span class="bi bi-bag-dash"></span>';
+            // var icon = '<span class="bi bi-bag-dash"></span>';
             $("#change").empty();
             $("#change").html(respone);
-            var noti = $( "#noti" ).val();
-            alertify.notify(icon+ " " + noti, 'custom');
+            // var noti = $( "#noti" ).val();
+            // alertify.notify(icon+ " " + noti, 'custom');
+            console.log('delete');
         });
 
-        $.ajax({
-            url: "cartQuantity" ,
-            type:'GET',   
-        }).done(function(respone){
-            $('#CartCount').text(respone);
+        // $.ajax({
+        //     url: "cartQuantity" ,
+        //     type:'GET',   
+        // }).done(function(respone){
+        //     $('#CartCount').text(respone);
             
+        // });
         });
+    });
+</script>
+
+
+<script>
+    // function updateCart(){
+    //     var list= [];
+    //     $("table tbody tr td").each(function(){
+    //         $(this).find("input").each(function(){
+    //             var element = {key: $(this).data("id"),value: $(this).val()};
+    //             list.push(element);
+    //         });
+    //     });
+
+    //     console.log(list);
+    //     var list1 = [1,2,3]
+    //     $.ajax({
+    //         url: "updateCart",
+    //         type:'POST',
+    //         data:{
+    //             "_token": "{{ csrf_token() }}",
+    //             "data": list,
+    //         }
+    //     }).done(function(respone){
+    //         var icon = '<span class="bi bi-bag-dash"></span>';
+    //         $("#change").empty();
+    //         $("#change").html(respone);
+    //         var noti = $( "#noti" ).val();
+    //         // alertify.notify(icon+ " " + noti, 'custom');
+    //     });
+    //     $.ajax({
+    //         url: "cartQuantity" ,
+    //         type:'GET',   
+    //     }).done(function(respone){
+    //         $('#CartCount').text(respone);
+            
+    //     });
+    // }
+    
+    
+    $("#change").on("click", ".remove i", function () {
+        console.log('test');
+        $.ajax({
+            url: '/deleteCart/' + $(this).data('id'),
+            type: 'GET',
+        }).done(function (respone) {
+            // var icon = '<span class="bi bi-bag-dash"></span>';
+            $("#change").empty();
+            $("#change").html(respone);
+            // var noti = $( "#noti" ).val();
+            // alertify.notify(icon+ " " + noti, 'custom');
+            console.log('delete');
+        });
+
+        // $.ajax({
+        //     url: "cartQuantity" ,
+        //     type:'GET',   
+        // }).done(function(respone){
+        //     $('#CartCount').text(respone);
+            
+        // });
     });
 
     
     // so luong tung mon trong gio hang
     
-    $(".update").on("click",function(){
-        updateCart();
+    // $(".update").on("click",function(){
+    //     updateCart();
         
-    });
+    // });
 
-    function checkout(payment){
-        // updateCart();
-        var list= [];
+    // function checkout(payment){
+    //     // updateCart();
+    //     var list= [];
         
-        $("table tbody tr td").each(function(){
-            $(this).find("input").each(function(){
-                var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
-                list.push(element);
-            });
-        });
-        // var list1 = [1,2,3];
-        console.log(list);
-        $.ajax({
-            url: "booking",
-            type:'POST',
-            data:{
-                "_token": "{{ csrf_token() }}",
-                "data": list,
-                "payment": payment,
-            }
-        }).done(function(respone){
-            // console.log(respone);
-            if(payment == 4)
-            {
-                if(respone == 'error')
-                    {
-                        alertify.error('Error');
-                    }
-                else
-                    location.href = respone;
-                    // console.log(respone);
-            }
-            else
-                {
-                    location.href = '/receipt';
-                }
-        });
-    }
+    //     $("table tbody tr td").each(function(){
+    //         $(this).find("input").each(function(){
+    //             var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
+    //             list.push(element);
+    //         });
+    //     });
+    //     // var list1 = [1,2,3];
+    //     console.log(list);
+    //     $.ajax({
+    //         url: "booking",
+    //         type:'POST',
+    //         data:{
+    //             "_token": "{{ csrf_token() }}",
+    //             "data": list,
+    //             "payment": payment,
+    //         }
+    //     }).done(function(respone){
+    //         // console.log(respone);
+    //         if(payment == 4)
+    //         {
+    //             if(respone == 'error')
+    //                 {
+    //                     alertify.error('Error');
+    //                 }
+    //             else
+    //                 location.href = respone;
+    //                 // console.log(respone);
+    //         }
+    //         else
+    //             {
+    //                 location.href = '/receipt';
+    //             }
+    //     });
+    // }
 
-    $(".checkout").on("click",function(){
-        var payment =$('input[name="payment"]:checked').val();
+    // $(".checkout").on("click",function(){
+    //     var payment =$('input[name="payment"]:checked').val();
 
-        checkout(payment);
-    });
+    //     checkout(payment);
+    // });
 
-</script> --}}
+</script>
 
 @else
 <div class="container">

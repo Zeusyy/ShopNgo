@@ -32,4 +32,12 @@ Route::get('/cart',"CartController@index")
 Route::get('/addCart/{id}',"CartController@add")
 ->name('cart.add');
 
+Route::get('/deleteCart/{id}',"CartController@deleteCart")
+->name('cart.delete');
+
+Route::get('/clearCart',"CartController@clearCart")
+->name('cart.clear');
+
+
+
 
